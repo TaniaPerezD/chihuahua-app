@@ -10,11 +10,14 @@ jobs:
   platzi:
       runs-on: ubuntu-latest
 
+      strategy:
+        matrix:
+          node-version: ["18.x", "20.x", "22.x"]
+
       steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v3
         with:
-          node-version: ["18.x", "20.x", "22.x"]
           cache: "npm"
       - run: npm install -no-audit
       - run: npm run lint
